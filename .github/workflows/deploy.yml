@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Debug files
+        run: ls -R
+
       - name: Copy index.html to server
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -21,3 +24,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "html/index.html"
           target: "/var/www/html"
+          strip_components: 1
